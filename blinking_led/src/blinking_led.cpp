@@ -1,7 +1,9 @@
 
 #include <ros/ros.h>
 //#include <wiringPi.h>
-#include <pigpio.h>
+extern "C" {
+	#include <pigpio.h>
+}
 #include <std_msgs/Bool.h>
 #include <stdlib.h>
 
@@ -34,7 +36,13 @@ int main(int argc, char **argv)
 			//digitalWrite(4,LOW);
 			gpioWrite(4,0);
 		}
-		ROS_INFO_STREAM("Sending led status: " << msg.data);
+		if (msg.data == true){
+			ROS_INFO_STREAM("Sending led status: true");
+		}
+		else{
+			ROS_INFO_STREAM("Sending led status: false");
+		}
+		//ROS_INFO_STREAM("Sending led status: " << msg.data);
 		pub.publish(msg);
 
 		rate.sleep();
