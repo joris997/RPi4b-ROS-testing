@@ -6,3 +6,5 @@ just testing the workings of ROS on the RPi by printing a single statement
 
 ## blinking_led
 send an on/off signal to a GPIO port on the RPi, enabling or disabling an LED and publishing a boolean indicating the status of the LED
+- requires pigpio library
+- requires root access in order to access the GPIO pins
