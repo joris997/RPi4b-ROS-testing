@@ -33,3 +33,6 @@
 
 # added
 *.save
+
+# temps
+*.cpp~
