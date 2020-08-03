@@ -16,24 +16,24 @@ extern "C" {
 #include <std_msgs/Int8.h>
 #include <stdlib.h>
 
+ros::Publisher pub;
 std_msgs::Int8 ctr;
-ctr.data = 0;
 
 void statusMessageReceived(const std_msgs::Bool &msg){
   if (msg.data == true){
     ROS_INFO_STREAM("Sender led status: true");
-    gpioWrite(5,1);
-    ctr += 1;
+    gpioWrite(7,1);
+    ctr.data += 1;
   }
   else{
     ROS_INFO_STREAM("Sender led status: false");
-    gpioWrite(5,1);
+    gpioWrite(7,0);
   }
 
   ros::NodeHandle nh2;
   pub = nh2.advertise<std_msgs::Int8>("/blinkcnt",1);
   ROS_INFO_STREAM("led has now blinked " << ctr << " times!");
-  pub.publish(ctr);  
+  pub.publish(ctr);
 }
 
 
@@ -44,7 +44,7 @@ int main(int argc, char **argv){
     ROS_INFO_STREAM("pigpio init failed");
     return 1;
   }
-  gpioSetMode(5,PI_OUTPUT)
+  gpioSetMode(5,PI_OUTPUT);
   
   ros::NodeHandle nh;
   ros::Subscriber sub = nh.subscribe("ledstatus",1,&statusMessageReceived);

@@ -20,7 +20,7 @@ int main(int argc, char **argv){
 		ROS_INFO_STREAM("pigpio init failed");
 		return 1;
 	}
-	gpioSetMode(4,PI_OUTPUT)
+	gpioSetMode(4,PI_OUTPUT);
 	
 	ros::NodeHandle nh;
 	ros::Publisher pub = nh.advertise<std_msgs::Bool>("/ledstatus",1);
