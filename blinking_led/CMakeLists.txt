@@ -14,7 +14,7 @@ catkin_package()
 include_directories(include ${catkin_INCLUDE_DIRS})
 add_executable(blinking_led src/blinking_led.cpp)
 
-target_link_libraries(blinking_led ${catkin_LIBRARIES} pigpio)
+target_link_libraries(blinking_led ${catkin_LIBRARIES} pigpiod_if2 pigpio)
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
