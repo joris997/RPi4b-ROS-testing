@@ -8,7 +8,8 @@
 
 #include <ros/ros.h>
 extern "C" {
-#include <pigpio.h>
+  //#include <pigpio.h>
+  #include <pigpio_if2.h>
 }
 #include <std_msgs/Bool.h>
 #include <stdlib.h>

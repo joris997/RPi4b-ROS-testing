@@ -1,5 +1,5 @@
 # RPi4b_ROS_testing
-Multiple simple tests with ROS on the Raspberry Pi 4B using GPIO ports
+Multiple simple tests with ROS on the Raspberry Pi 4B using GPIO ports. Ensure you have the pigpio library installed and that you run the Pigpio Daemon on Raspberry startup (can do it manually if you want) according to [this forum post](https://www.raspberrypi.org/forums/viewtopic.php?t=103752)
 
 ## talker
 just testing the workings of ROS on the RPi by printing a single statement
