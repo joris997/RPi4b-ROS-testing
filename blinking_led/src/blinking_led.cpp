@@ -19,11 +19,6 @@ int pi = pigpio_start(nullptr,nullptr);
 int main(int argc, char **argv){
 	ros::init(argc, argv, "blinking_led");
 
-	//if (gpioInitialise() < 0){
-	//	ROS_INFO_STREAM("pigpio init failed");
-	//	return 1;
-	//}
-	//gpioSetMode(4,PI_OUTPUT);
 	set_mode(pi,4,PI_OUTPUT);
 
 	ros::NodeHandle nh;
@@ -36,12 +31,10 @@ int main(int argc, char **argv){
 	while(ros::ok()){
 		if(msg.data == false){
 			msg.data = true;
-			//gpioWrite(4,1);
 			gpio_write(pi,4,1);
 		}
 		else{
 			msg.data = false;
-			//gpioWrite(4,0);
 			gpio_write(pi,4,0);
 		}
 		if (msg.data == true){

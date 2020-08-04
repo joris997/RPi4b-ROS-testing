@@ -24,13 +24,11 @@ std_msgs::Int8 ctr;
 void statusMessageReceived(const std_msgs::Bool &msg){
   if (msg.data == true){
     ROS_INFO_STREAM("Sender led status: true");
-    //gpioWrite(7,1);
     gpio_write(pi,17,1);
     ctr.data += 1;
   }
   else{
     ROS_INFO_STREAM("Sender led status: false");
-    //gpioWrite(7,0);
     gpio_write(pi,17,0);
   }
 
@@ -44,13 +42,8 @@ void statusMessageReceived(const std_msgs::Bool &msg){
 int main(int argc, char **argv){
   ros::init(argc, argv, "answer_led");
 
-  //if (gpioInitialise() < 0){
-  //  ROS_INFO_STREAM("pigpio init failed");
-  //  return 1;
-  //}
   set_mode(pi,17,PI_OUTPUT);
-  //gpioSetMode(5,PI_OUTPUT);
-
+  
   ros::NodeHandle nh;
   ros::Subscriber sub = nh.subscribe("ledstatus",1,&statusMessageReceived);
   ros::spin();
