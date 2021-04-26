@@ -32,16 +32,12 @@ int main(int argc, char **argv){
 		if(msg.data == false){
 			msg.data = true;
 			gpio_write(pi,4,1);
+			ROS_INFO_STREAM("Led: false");
 		}
 		else{
 			msg.data = false;
 			gpio_write(pi,4,0);
-		}
-		if (msg.data == true){
-			ROS_INFO_STREAM("Sending led status: true");
-		}
-		else{
-			ROS_INFO_STREAM("Sending led status: false");
+			ROS_INFO_STREAM("Led: true");
 		}
 		pub.publish(msg);
 
