@@ -12,7 +12,7 @@ from std_msgs.msg import Int8
 
 
 def keys():
-    pub = rospy.Publisher('key',Int8,queue_size=10) # "key" is the publisher name
+    pub = rospy.Publisher('key',Int8,queue_size=1) # "key" is the publisher name
     rospy.init_node('keypress',anonymous=True)
     rate = rospy.Rate(10)#try removing this line ans see what happens
     while not rospy.is_shutdown():
