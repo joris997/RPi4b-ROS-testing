@@ -3,11 +3,11 @@
 		pkg="blinking_led"
 		type="blinking_led"
 		name="blk_led"
-	/>
+	/node>
 
 	<node
 		pkg="answer_led"
 		type="answer_led"
 		name="ans_led"
-	/>
+	/node>
 </launch>
