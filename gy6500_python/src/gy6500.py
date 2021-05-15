@@ -54,9 +54,9 @@ def measure():
         gx = read_word_2c(0x43)
         gy = read_word_2c(0x45)
         gz = read_word_2c(0x47)
-        gx_scaled = gx / 131
-        gy_scaled = gy / 131
-        gz_scaled = gz / 131
+        gx_scaled = gx / 131.0
+        gy_scaled = gy / 131.0
+        gz_scaled = gz / 131.0
  
         ax = read_word_2c(0x3b)
         ay = read_word_2c(0x3d)
@@ -77,13 +77,13 @@ def measure():
         pub.publish(imu)
         
         os.system("clear")
-        print "gx: ", ("%5d" % gx), " scaled: ", gx_scaled
-        print "gy: ", ("%5d" % gy), " scaled: ", gy_scaled
-        print "gz: ", ("%5d" % gz), " scaled: ", gz_scaled
+        print "gx: ", ("%5d" % gx), " scaled: ", ("%.2f" % gx_scaled)
+        print "gy: ", ("%5d" % gy), " scaled: ", ("%.2f" % gy_scaled)
+        print "gz: ", ("%5d" % gz), " scaled: ", ("%.2f" % gz_scaled)
      
-        print "ax: ", ("%6d" % ax), " scaled: ", ax_scaled
-        print "ay: ", ("%6d" % ay), " scaled: ", ay_scaled
-        print "az: ", ("%6d" % az), " scaled: ", az_scaled
+        print "ax: ", ("%6d" % ax), " scaled: ", ("%.2f" % ax_scaled)
+        print "ay: ", ("%6d" % ay), " scaled: ", ("%.2f" % ay_scaled)
+        print "az: ", ("%6d" % az), " scaled: ", ("%.2f" % az_scaled)
      
         print "X Rotation: " , get_x_rotation(ax_scaled, ay_scaled, az_scaled)
         print "Y Rotation: " , get_y_rotation(ax_scaled, ay_scaled, az_scaled)
